@@ -57,3 +57,4 @@ slowapi
 
 pydantic[email]
 langchain-community
+greenlet
