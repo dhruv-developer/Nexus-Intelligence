@@ -55,4 +55,5 @@ prometheus-client
 
 slowapi
 
-pydantic-email
+pydantic[email]
+langchain-community
