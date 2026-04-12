@@ -1,0 +1,299 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme colors */
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 0.5rem;
+    
+    /* Nexus brand colors */
+    --nexus-50: 240 249 255;
+    --nexus-100: 219 234 254;
+    --nexus-200: 191 219 254;
+    --nexus-300: 147 197 253;
+    --nexus-400: 96 165 250;
+    --nexus-500: 59 130 246;
+    --nexus-600: 37 99 235;
+    --nexus-700: 29 78 216;
+    --nexus-800: 30 64 175;
+    --nexus-900: 30 58 138;
+    --nexus-950: 23 37 84;
+  }
+
+  .dark {
+    /* Dark theme colors */
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 94.1%;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Smooth transitions for theme switching */
+  * {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+}
+
+@layer components {
+  /* Chat message styles */
+  .chat-message-user {
+    @apply bg-nexus-500 text-white rounded-2xl rounded-br-sm px-4 py-3 max-w-3xl shadow-sm;
+  }
+
+  .chat-message-ai {
+    @apply bg-card border border-border rounded-2xl rounded-bl-sm px-4 py-3 max-w-3xl shadow-sm;
+  }
+
+  .chat-message-thinking {
+    @apply bg-muted border border-border rounded-2xl rounded-bl-sm px-4 py-3 max-w-3xl;
+  }
+
+  /* Insight card styles */
+  .insight-card {
+    @apply bg-card border border-border rounded-xl p-4 shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  .insight-card-highlight {
+    @apply ring-2 ring-nexus-500 ring-offset-2 ring-offset-background;
+  }
+
+  /* Loading animations */
+  .loading-dots {
+    @apply inline-flex space-x-1;
+  }
+
+  .loading-dots span {
+    @apply w-2 h-2 bg-nexus-500 rounded-full animate-pulse;
+  }
+
+  .loading-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .loading-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  /* Button styles */
+  .btn-primary {
+    @apply bg-nexus-500 hover:bg-nexus-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-nexus-500 focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary hover:bg-secondary/80 text-secondary-foreground font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  .btn-ghost {
+    @apply hover:bg-accent hover:text-accent-foreground font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+
+  /* Input styles */
+  .input-field {
+    @apply w-full px-3 py-2 border border-input bg-background rounded-lg text-sm placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-nexus-500 focus:border-transparent transition-all duration-200;
+  }
+
+  /* Sidebar styles */
+  .sidebar-item {
+    @apply flex items-center space-x-3 px-3 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+
+  .sidebar-item-active {
+    @apply bg-nexus-100 text-nexus-700 dark:bg-nexus-900 dark:text-nexus-300;
+  }
+
+  .sidebar-item-inactive {
+    @apply text-muted-foreground hover:bg-accent hover:text-foreground;
+  }
+
+  /* Card styles */
+  .dashboard-card {
+    @apply bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-all duration-200;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-nexus {
+    background: linear-gradient(135deg, hsl(var(--nexus-500)) 0%, hsl(var(--nexus-600)) 100%);
+  }
+
+  .gradient-mesh {
+    background: linear-gradient(135deg, hsl(var(--nexus-500) / 0.1) 0%, hsl(var(--nexus-600) / 0.1) 100%);
+  }
+
+  /* Scrollbar styles */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground;
+  }
+
+  /* Animation utilities */
+  .fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+
+  .scale-in {
+    animation: scaleIn 0.2s ease-out;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      transform: scale(0.95);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  /* Responsive text sizes */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-base sm:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-lg sm:text-xl;
+  }
+
+  .text-responsive-xl {
+    @apply text-xl sm:text-2xl;
+  }
+
+  .text-responsive-2xl {
+    @apply text-2xl sm:text-3xl;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md border border-border/50;
+  }
+
+  /* Hover effects */
+  .hover-lift {
+    @apply transition-transform duration-200 hover:scale-105;
+  }
+
+  .hover-glow {
+    @apply transition-shadow duration-200 hover:shadow-lg hover:shadow-nexus-500/20;
+  }
+}
+
+@layer components {
+  .chat-message {
+    @apply max-w-3xl mx-auto p-4 rounded-lg;
+  }
+  
+  .user-message {
+    @apply bg-nexus-100 text-nexus-900 ml-auto;
+  }
+  
+  .ai-message {
+    @apply bg-gray-100 text-gray-900 mr-auto;
+  }
+  
+  .insight-card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-sm p-6;
+  }
+  
+  .metric-card {
+    @apply bg-gradient-to-br from-nexus-50 to-white border border-nexus-200 rounded-lg p-4;
+  }
+  
+  .loading-dots::after {
+    content: '';
+    animation: dots 1.5s steps(4, end) infinite;
+  }
+  
+  @keyframes dots {
+    0%, 20% { content: ''; }
+    40% { content: '.'; }
+    60% { content: '..'; }
+    80%, 100% { content: '...'; }
+  }
+}

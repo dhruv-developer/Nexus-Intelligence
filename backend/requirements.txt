@@ -1,0 +1,58 @@
+# Core Framework
+fastapi
+uvicorn[standard]
+pydantic
+pydantic-settings
+
+# Database
+sqlalchemy
+alembic
+psycopg2-binary
+asyncpg
+
+# Authentication & Security
+python-jose[cryptography]
+passlib[bcrypt]
+python-multipart
+cryptography
+
+# AI/ML
+openai
+langchain
+langchain-openai
+scikit-learn
+pandas
+numpy
+prophet
+
+# Data Processing
+openpyxl
+xlrd
+
+# Caching & Storage
+redis
+aioredis
+
+# HTTP Client
+httpx
+aiofiles
+
+# Utilities
+python-dotenv
+loguru
+typer
+rich
+
+# Development
+pytest
+pytest-asyncio
+black
+ruff
+mypy
+
+# Monitoring
+prometheus-client
+
+slowapi
+
+pydantic-email
